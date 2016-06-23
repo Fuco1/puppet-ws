@@ -1,4 +1,5 @@
 # -*- mode: shell-script -*-
+cd $HOME
 apt-get update
 apt-get install -y git puppet librarian-puppet
 git clone https://github.com/Fuco1/puppet-ws.git
