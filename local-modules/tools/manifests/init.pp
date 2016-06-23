@@ -33,4 +33,5 @@ class tools {
   package { "netcat": ensure => installed }
   package { "wget": ensure => installed }
   package { "whois": ensure => installed }
+  package { "pcregrep": ensure => installed }
 }
