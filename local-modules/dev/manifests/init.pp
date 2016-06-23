@@ -24,6 +24,7 @@ class dev {
 
   # haskell
   package { "haskell-platform": ensure => installed } ->
+  exec { "/usr/bin/cabal update": } ->
   package { "c2hs": ensure => installed } ->
   package { "hlint": ensure => installed }
 
