@@ -27,7 +27,8 @@ class tools {
 
   package { "imagemagick": ensure => installed }
   package { "less": ensure => installed }
-  package { "gnupg": ensure => installed }
+  package { "gnupg": ensure => installed } ->
+  package { "gnupg-agent": ensure => installed }
   package { "curl": ensure => installed }
   package { "netcat": ensure => installed }
   package { "wget": ensure => installed }
