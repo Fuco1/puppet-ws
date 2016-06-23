@@ -1,0 +1,8 @@
+# -*- mode: sh -*-
+apt-get update
+apt-get install git
+git clone https://github.com/Fuco1/puppet-ws.git
+cd puppet-ws
+# remove bootstrap git, we will install latest from ppa
+apt-get remove git
+run
