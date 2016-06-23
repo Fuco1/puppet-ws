@@ -14,6 +14,7 @@ class dev {
 
   # python
   package { "python-all-dev": ensure => installed } ->
+  package { "python-pip": ensure => installed } ->
   package { "python3-all-dev": ensure => installed } ->
   package { "python-virtualenv": ensure => installed } ->
   package { "virtualfish":
