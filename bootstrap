@@ -1,6 +1,6 @@
 # -*- mode: shell-script -*-
 apt-get update
-apt-get install -y git
+apt-get install -y git puppet librarian-puppet
 git clone https://github.com/Fuco1/puppet-ws.git
 # remove bootstrap git, we will install latest from ppa
 apt-get remove -y git
