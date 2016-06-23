@@ -1,4 +1,7 @@
 class tools {
+  # version control
+  include git
+
   # avconv
   package { "libav-tools": ensure => installed } ->
   package { "libavcodec-extra": ensure => installed }
