@@ -8,10 +8,16 @@ class xmonad {
   package { 'libghc-xmonad-dev': ensure => installed } ->
   package { 'libghc-xmonad-contrib-dev': ensure => installed }
 
-  exec { '/usr/bin/cabal install dbus strict':
-    require => Exec["/usr/bin/cabal update"]
+  include cabal
+  cabal::install { 'dbus': }
+  cabal::install { 'strict': }
+  cabal::install { 'xmobar':
+    flags => '--flags="all_extensions"',
+    require => [
+      Package['libasound2-dev'],
+      Package['libiw-dev'],
+      Package['libxpm-dev'],
+    ],
+    unless => "ls ${home[$user]}/.cabal/bin/xmobar"
   }
-  ->
-  exec { '/usr/bin/cabal install xmobar --flags="all_extensions"': }
-
 }
