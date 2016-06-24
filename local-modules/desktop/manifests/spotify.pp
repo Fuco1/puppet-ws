@@ -12,6 +12,6 @@ class spotify {
     pin         => 400
   }
   ->
-  package { 'spotify-client-0.9.17': ensure => installed }
+  package { 'spotify-client': ensure => installed }
 
 }
