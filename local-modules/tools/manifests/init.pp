@@ -21,6 +21,7 @@ class tools {
   # monitoring
   package { "htop": ensure => installed }
   package { "ioping": ensure => installed }
+  package { "iputils-ping": ensure => installed }
   package { "iotop": ensure => installed }
   package { "lshw": ensure => installed }
   package { "lsof": ensure => installed }
@@ -34,4 +35,11 @@ class tools {
   package { "wget": ensure => installed }
   package { "whois": ensure => installed }
   package { "pcregrep": ensure => installed }
+
+  package { "alsa-base": ensure => installed }
+  package { "libasound2-dev": ensure => installed }
+  package { "pulseaudio": ensure => installed }
+
+  package { "libiw-dev": ensure => installed }
+  package { "libxpm-dev": ensure => installed }
 }
