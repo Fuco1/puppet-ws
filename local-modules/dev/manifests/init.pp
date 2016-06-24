@@ -24,7 +24,11 @@ class dev {
 
   # haskell
   package { "haskell-platform": ensure => installed } ->
-  exec { "/usr/bin/cabal update": } ->
+  exec { "cabal update":
+    environment => "HOME=${home[$user]}",
+    path => ['/bin', '/usr/bin', '/usr/local/bin'],
+  }
+  ->
   package { "c2hs": ensure => installed } ->
   package { "hlint": ensure => installed }
 
