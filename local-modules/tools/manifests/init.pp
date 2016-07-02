@@ -42,4 +42,13 @@ class tools {
 
   package { "libiw-dev": ensure => installed }
   package { "libxpm-dev": ensure => installed }
+
+  package { "wine": ensure => installed }
+
+  package { "dbus": ensure => installed }
+
+  #file system
+  package { "avfs": ensure => installed }
+  package { "fuse": ensure => installed }
+  package { "libfuse-dev": ensure => installed }
 }
