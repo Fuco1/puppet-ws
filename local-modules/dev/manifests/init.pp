@@ -1,5 +1,7 @@
 class dev {
 
+  include libraries
+
   package { "build-essential": ensure => installed }
   package { "dpkg-dev": ensure => installed }
 
