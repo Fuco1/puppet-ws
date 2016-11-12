@@ -10,7 +10,6 @@ class git {
   package { 'git':
     ensure => 'latest',
     install_options => ['--force-yes', '-y',],
-    require => Class['apt::update'],
   }
 
 }
