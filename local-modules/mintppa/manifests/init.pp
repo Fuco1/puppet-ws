@@ -6,7 +6,7 @@ class mintppa {
       options => '-y',
     }
     ->
-    apt::key { 'ppa:git-core/ppa':
+    apt::key { "$name":
       id => "$id",
     }
   }
