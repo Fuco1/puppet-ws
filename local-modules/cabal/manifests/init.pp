@@ -10,6 +10,7 @@ class cabal {
     exec { "cabal install $name $flags":
       environment => "HOME=${home[$user]}",
       path => ['/bin', '/usr/bin', '/usr/local/bin'],
+      require => Package['haskell-platform'],
       unless => $unless
     }
   }
