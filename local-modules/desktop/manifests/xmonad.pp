@@ -1,8 +1,10 @@
 class xmonad {
   include cabal
 
-  file { "${home[$user]}/dev": ensure => directory } ->
-  file { "${home[$user]}/dev/haskell": ensure => directory } ->
+  file { ["${home[$user]}/dev", "${home[$user]}/dev/haskell"]:
+    ensure => directory,
+    require => User[$user],
+  } ->
   # TODO: link .xmonad/ binary into ~/bin/xmonad
   # TODO: make sure .xinitrc has /home/matus/bin/xmonad as the entry point
   cabal::fromgit { "${home[$user]}/dev/haskell/xmonad":
