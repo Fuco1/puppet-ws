@@ -6,6 +6,7 @@ $home = {
 node default {
   $user = 'matus'
 
+  file { "${home[$user]}": ensure => directory } ->
   user { "$user":
     ensure => present,
     home => "${home[$user]}",
