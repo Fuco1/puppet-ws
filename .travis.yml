@@ -1,0 +1,10 @@
+dist: trusty
+ruby: 2.3.1
+sudo: true
+install:
+  - sudo apt-get update
+  - sudo apt-get install -y puppet
+  - gem install librarian-puppet
+  - librarian-puppet install
+script:
+  - sudo puppet apply --modulepath=$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules manifests/site.pp
