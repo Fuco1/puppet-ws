@@ -1,14 +1,17 @@
 class xmonad {
-
-  package { 'xmonad':
-    ensure => installed,
-    require => Package['haskell-platform'],
-  }
-  ->
-  package { 'libghc-xmonad-dev': ensure => installed } ->
-  package { 'libghc-xmonad-contrib-dev': ensure => installed }
-
   include cabal
+
+  file { "${home[$user]}/dev": ensure => directory } ->
+  file { "${home[$user]}/dev/haskell": ensure => directory } ->
+  # TODO: link .xmonad/ binary into ~/bin/xmonad
+  # TODO: make sure .xinitrc has /home/matus/bin/xmonad as the entry point
+  cabal::fromgit { "${home[$user]}/dev/haskell/xmonad":
+    source   => 'git@github.com:xmonad/xmonad.git',
+  } ->
+  cabal::fromgit { "${home[$user]}/dev/haskell/xmonad-contrib":
+    source   => 'git@github.com:xmonad/xmonad-contrib.git',
+  }
+
   cabal::install { 'dbus': }
   cabal::install { 'strict': }
   cabal::install { 'xmobar':
@@ -17,6 +20,7 @@ class xmonad {
       Package['libasound2-dev'],
       Package['libiw-dev'],
       Package['libxpm-dev'],
+      Cabal::Fromgit["${home[$user]}/dev/haskell/xmonad-contrib"],
     ],
     unless => "ls ${home[$user]}/.cabal/bin/xmobar"
   }
