@@ -37,11 +37,9 @@ class tools {
   package { "pcregrep": ensure => installed }
 
   package { "alsa-base": ensure => installed }
-  package { "libasound2-dev": ensure => installed }
   package { "pulseaudio": ensure => installed }
 
   package { "libiw-dev": ensure => installed }
-  package { "libxpm-dev": ensure => installed }
 
   package { "wine": ensure => installed }
 
