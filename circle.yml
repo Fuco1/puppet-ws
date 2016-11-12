@@ -1,3 +1,7 @@
 test:
   override:
-    - sudo apt-get update && sudo apt-get install -y curl && curl -fsSL https://raw.githubusercontent.com/Fuco1/puppet-ws/master/bootstrap | sudo bash
+    - sudo apt-get update
+    - sudo apt-get install -y puppet
+    - gem install librarian-puppet
+    - librarian-puppet install
+    - sudo puppet apply --modulepath=$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules manifests/site.pp
