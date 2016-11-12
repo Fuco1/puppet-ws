@@ -15,7 +15,6 @@ class libraries {
   package { "libncursesw5-dev": ensure => installed }
   package { "libglib2.0-dev": ensure => installed }
   package { "libpulse-dev": ensure => installed }
-  package { "libasound2-dev": ensure => installed }
   package { "libid3tag0-dev": ensure => installed }
   package { "libogg-dev": ensure => installed }
   package { "libsamplerate0-dev": ensure => installed }
@@ -55,14 +54,12 @@ class libraries {
   package { "libcdio-dev": ensure => installed }
   package { "libadplug-dev": ensure => installed }
   package { "libfaad-dev": ensure => installed }
-  package { "libfluidsynth-dev": ensure => installed }
   package { "libgme-dev": ensure => installed }
   package { "libshout3-dev": ensure => installed }
   package { "libmpg123-dev": ensure => installed }
   package { "libopus-dev": ensure => installed }
   package { "libsndfile1-dev": ensure => installed }
   package { "libvorbis-dev": ensure => installed }
-  package { "libresid-builder-dev": ensure => installed }
   package { "libwildmidi-dev": ensure => installed }
   package { "libtwolame-dev": ensure => installed }
   package { "libroar-dev": ensure => installed }
