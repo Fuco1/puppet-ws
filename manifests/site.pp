@@ -8,7 +8,7 @@ node default {
 
   user { "$user":
     ensure => present,
-    home => '${home[$user]}',
+    home => "${home[$user]}",
   }
 
   include apt
