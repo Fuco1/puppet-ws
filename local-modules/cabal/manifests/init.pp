@@ -1,6 +1,8 @@
 # TODO: magic dependency on $home and $user
 class cabal {
 
+  include ::cabal::update
+
   define install (
     $flags = '',
     $unless = "ghc-pkg list ${name} | grep ${name}"
@@ -8,7 +10,6 @@ class cabal {
     exec { "cabal install $name $flags":
       environment => "HOME=${home[$user]}",
       path => ['/bin', '/usr/bin', '/usr/local/bin'],
-      require => Exec['cabal update'],
       unless => $unless
     }
   }
