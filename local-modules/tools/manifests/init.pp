@@ -1,4 +1,6 @@
 class tools {
+  include wine
+
   # version control
   include git
   package { "mercurial": ensure => installed }
@@ -40,8 +42,6 @@ class tools {
   package { "pulseaudio": ensure => installed }
 
   package { "libiw-dev": ensure => installed }
-
-  package { "wine": ensure => installed }
 
   package { "dbus": ensure => installed }
 
