@@ -7,11 +7,13 @@ class desktop {
 
   cron { 'org-git-commit':
     command => '/home/matus/bin/org-git-commit',
+    user => $user,
     minute => 0,
   }
 
   cron { 'run-getmail':
     command => '/home/matus/bin/run-getmail',
+    user => $user,
     minute => 55,
   }
 }
