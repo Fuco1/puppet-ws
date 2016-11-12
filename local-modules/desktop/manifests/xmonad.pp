@@ -8,10 +8,10 @@ class xmonad {
   # TODO: link .xmonad/ binary into ~/bin/xmonad
   # TODO: make sure .xinitrc has /home/matus/bin/xmonad as the entry point
   cabal::fromgit { "${home[$user]}/dev/haskell/xmonad":
-    source   => 'https://github.com/xmonad/xmonad.git',
+    source   => 'https://github.com/xmonad/xmonad',
   } ->
   cabal::fromgit { "${home[$user]}/dev/haskell/xmonad-contrib":
-    source   => 'https://github.com/xmonad/xmonad-contrib.git',
+    source   => 'https://github.com/xmonad/xmonad-contrib',
   }
 
   cabal::install { 'dbus': }
