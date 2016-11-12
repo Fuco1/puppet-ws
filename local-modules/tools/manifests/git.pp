@@ -8,7 +8,7 @@ class git {
   }
   ->
   package { 'git':
-    ensure => 'present',
+    ensure => 'latest',
     install_options => ['--force-yes', '-y',],
     require => Class['apt::update'],
   }
