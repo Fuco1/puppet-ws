@@ -4,6 +4,7 @@ class desktop {
   include hunspell
 
   package { "trayer": ensure => installed }
+  package { "fonts-inconsolata": ensure => installed }
 
   cron { 'org-git-commit':
     command => '/home/matus/bin/org-git-commit',
