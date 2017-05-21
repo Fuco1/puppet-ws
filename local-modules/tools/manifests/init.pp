@@ -1,4 +1,7 @@
 class tools {
+
+  include cask
+
   include wine
 
   # version control
