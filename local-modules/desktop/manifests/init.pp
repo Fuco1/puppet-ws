@@ -6,6 +6,7 @@ class desktop {
   package { "trayer": ensure => installed }
   package { "fonts-inconsolata": ensure => installed }
   package { "fish": ensure => installed }
+  package { "tmux": ensure => installed }
 
   cron { 'org-git-commit':
     command => '/home/matus/bin/org-git-commit',
