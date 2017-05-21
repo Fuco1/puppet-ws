@@ -7,4 +7,4 @@ install:
   - gem install librarian-puppet
   - librarian-puppet install
 script:
-  - sudo puppet apply --modulepath=$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules manifests/site.pp
+  - sudo puppet apply --noop --modulepath=$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules manifests/site.pp
