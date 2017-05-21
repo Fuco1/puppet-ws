@@ -7,6 +7,7 @@ class wine {
   package { 'wine1.8':
     ensure => 'latest',
     install_options => ['--force-yes', '-y',],
-  }
+  } ->
+  package { 'winetricks': ensure => latest }
 
 }
