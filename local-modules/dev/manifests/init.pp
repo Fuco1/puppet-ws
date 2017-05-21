@@ -1,6 +1,9 @@
 class dev {
 
-  #include libraries
+  include python
+  include haskell
+
+  include libraries
 
   package { "build-essential": ensure => installed }
   package { "dpkg-dev": ensure => installed }
@@ -20,20 +23,5 @@ class dev {
   package { "doxygen": ensure => installed }
   package { "valgrind": ensure => installed }
   package { "ccache": ensure => installed }
-
-  # python
-  package { "python-all-dev": ensure => installed } ->
-  package { "python-pip": ensure => installed } ->
-  package { "python3-all-dev": ensure => installed } ->
-  package { "python-virtualenv": ensure => installed } ->
-  package { "virtualfish":
-    provider => "pip",
-    ensure => installed
-  }
-
-  # haskell
-  package { "haskell-platform": ensure => installed } ->
-  package { "c2hs": ensure => installed } ->
-  package { "hlint": ensure => installed }
 
 }
