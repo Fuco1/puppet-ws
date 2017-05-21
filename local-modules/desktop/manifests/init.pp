@@ -20,4 +20,7 @@ class desktop {
     user => $user,
     minute => 55,
   }
+
+  file { "${home[$user]}/download-local": ensure => directory }
+
 }
