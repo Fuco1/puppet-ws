@@ -1,5 +1,6 @@
 class tools {
 
+  include docker
   include cask
 
   include wine
