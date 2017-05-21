@@ -7,6 +7,7 @@ class desktop {
   package { "fonts-inconsolata": ensure => installed }
   package { "fish": ensure => installed }
   package { "tmux": ensure => installed }
+  package { "anki": ensure => installed }
 
   cron { 'org-git-commit':
     command => '/home/matus/bin/org-git-commit',
