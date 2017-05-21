@@ -1,5 +1,4 @@
 class mintppa {
-  include apt
 
   define ppa ($id) {
     apt::ppa { "$name":

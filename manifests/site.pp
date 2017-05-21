@@ -12,10 +12,6 @@ node default {
     home => "${home[$user]}",
   }
 
-  include apt
-  Class['apt::update'] -> Package<| |>
-
-  include cabal
   Class['cabal::update'] -> Cabal::Install<| |>
 
   include dev
