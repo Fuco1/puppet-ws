@@ -53,4 +53,7 @@ class tools {
   package { "avfs": ensure => installed }
   package { "fuse": ensure => installed }
   package { "libfuse-dev": ensure => installed }
+
+  # databases
+  package { "mysql-client": ensure => installed }
 }
