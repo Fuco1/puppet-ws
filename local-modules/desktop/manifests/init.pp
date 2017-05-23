@@ -2,6 +2,7 @@ class desktop {
   include spotify
   include xmonad
   include hunspell
+  include slack
 
   package { "trayer": ensure => installed }
   package { "fonts-inconsolata": ensure => installed }

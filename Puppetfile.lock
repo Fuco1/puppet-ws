@@ -1,6 +1,7 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    maestrodev-wget (1.7.3)
     puppetlabs-apt (2.2.2)
       puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
     puppetlabs-stdlib (4.12.0)
@@ -12,6 +13,7 @@ FORGE
       stahnma-epel (< 2.0.0, >= 1.2.2)
 
 DEPENDENCIES
+  maestrodev-wget (= 1.7.3)
   puppetlabs-apt (~> 2.2.2)
   puppetlabs-stdlib (~> 4.12.0)
   puppetlabs-vcsrepo (= 1.4.0)
