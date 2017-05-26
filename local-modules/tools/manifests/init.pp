@@ -41,6 +41,7 @@ class tools {
   package { "wget": ensure => installed }
   package { "whois": ensure => installed }
   package { "pcregrep": ensure => installed }
+  package { "silversearcher-ag": ensure => installed }
 
   package { "alsa-base": ensure => installed }
   package { "pulseaudio": ensure => installed }

@@ -15,6 +15,7 @@ class desktop {
   package { "adobe-flashplugin": ensure => installed }
   package { "pass": ensure => installed }
   package { "ledger": ensure => installed }
+  package { "qbittorrent": ensure => installed }
 
   cron { 'org-git-commit':
     command => '/home/matus/bin/org-git-commit',
