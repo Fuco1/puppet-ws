@@ -1,6 +1,8 @@
 define dockerbuild::install (
   $git = undef,
   $target = $name,
+  $builduser = 'root',
+  $installuser = 'root',
 ) {
   include dockerbuild
 
@@ -17,7 +19,7 @@ define dockerbuild::install (
     path => ['/usr/bin', '/bin'],
     cwd => "${home[$user]}/sources/${target}",
     command => "bash build.sh",
-    user => "root",
+    user => $builduser,
     require => Class['docker'],
     refreshonly => true,
   }
@@ -26,7 +28,7 @@ define dockerbuild::install (
     path => ['/usr/bin', '/bin'],
     cwd => "${home[$user]}/sources/${target}",
     command => "test -f install.sh && bash install.sh",
-    user => "root",
+    user => $installuser,
     refreshonly => true,
   }
 
