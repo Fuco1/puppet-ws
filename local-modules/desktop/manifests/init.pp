@@ -34,4 +34,12 @@ class desktop {
   file { "${home[$user]}/download-local": ensure => directory }
   file { "${home[$user]}/bin": ensure => directory }
 
+  # get rid of useless directories
+  file { "${home[$user]}/Desktop": ensure => absent, force => true, }
+  file { "${home[$user]}/Downloads": ensure => absent, force => true, }
+  file { "${home[$user]}/Pictures": ensure => absent, force => true, }
+  file { "${home[$user]}/Templates": ensure => absent, force => true, }
+  file { "${home[$user]}/Videos": ensure => absent, force => true, }
+  file { "${home[$user]}/Music": ensure => absent, force => true, }
+
 }
