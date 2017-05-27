@@ -30,5 +30,6 @@ class desktop {
   }
 
   file { "${home[$user]}/download-local": ensure => directory }
+  file { "${home[$user]}/bin": ensure => directory }
 
 }

@@ -2,6 +2,7 @@ class tools {
 
   include docker
   include cask
+  include php
 
   include wine
 
