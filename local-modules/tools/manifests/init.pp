@@ -5,6 +5,7 @@ class tools {
   include php
 
   include wine
+  include tagsistant
 
   # version control
   include git
@@ -58,4 +59,5 @@ class tools {
 
   # databases
   package { "mysql-client": ensure => installed }
+  package { "sqlite3": ensure => installed }
 }
