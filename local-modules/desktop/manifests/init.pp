@@ -16,6 +16,8 @@ class desktop {
   package { "pass": ensure => installed }
   package { "ledger": ensure => installed }
   package { "qbittorrent": ensure => installed }
+  package { "vlc-nox": ensure => installed }
+  package { "mplayer": ensure => installed }
 
   cron { 'org-git-commit':
     command => '/home/matus/bin/org-git-commit',
