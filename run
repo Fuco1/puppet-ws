@@ -1,3 +1,4 @@
-# -*- mode: shell-script -*-
+#!/bin/bash
+
 librarian-puppet install
 puppet apply --modulepath=$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules manifests/site.pp
