@@ -3,6 +3,8 @@ class desktop {
   include xmonad
   include hunspell
   include slack
+  include twmn
+  include zathura
 
   package { "trayer": ensure => installed }
   package { "fonts-inconsolata": ensure => installed }
