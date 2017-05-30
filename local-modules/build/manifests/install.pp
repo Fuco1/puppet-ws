@@ -1,12 +1,19 @@
-define dockerbuild::install (
+define build::install (
   $git = undef,
   $target = $name,
   $builduser = 'root',
   $installuser = 'root',
+  $docker = true,
 ) {
-  include dockerbuild
+  include build
 
-  vcsrepo { "dockerbuild-${name}":
+  if $docker {
+    $requireDocker = [Class['docker']]
+  } else {
+    $requireDocker = [Class['docker']]
+  }
+
+  vcsrepo { "build-vcs-${name}":
     ensure => present,
     provider => git,
     source => $git,
@@ -15,20 +22,21 @@ define dockerbuild::install (
     user => $user
   }
   ~>
-  exec { "dockerbuild-build-${name}":
+  exec { "build-build-${name}":
     path => ['/usr/bin', '/bin'],
     cwd => "${home[$user]}/sources/${target}",
     command => "bash build.sh",
     user => $builduser,
-    require => Class['docker'],
+    require => $requireDocker,
     refreshonly => true,
   }
   ~>
-  exec { "dockerbuild-install-${name}":
+  exec { "build-install-${name}":
     path => ['/usr/bin', '/bin'],
     cwd => "${home[$user]}/sources/${target}",
     command => "test -f install.sh && bash install.sh",
     user => $installuser,
+    require => $requireDocker,
     refreshonly => true,
   }
 

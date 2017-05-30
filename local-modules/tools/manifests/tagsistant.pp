@@ -5,7 +5,7 @@ class tagsistant {
   package { "libdbi-dev": ensure => installed }
   package { "libdbd-sqlite3": ensure => installed }
 
-  dockerbuild::install { 'tagsistant-build':
+  build::install { 'tagsistant-build':
     git => 'git@github.com:Fuco1/tagsistant-build.git',
     require => [
       Package["libglib2.0-dev"],
