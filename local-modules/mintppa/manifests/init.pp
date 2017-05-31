@@ -1,12 +1,12 @@
 class mintppa {
 
   define ppa ($id) {
-    apt::ppa { "$name":
+    apt::ppa { $name:
       options => '-y',
     }
     ->
-    apt::key { "$name":
-      id => "$id",
+    apt::key { $name:
+      id => $id,
     }
   }
 }

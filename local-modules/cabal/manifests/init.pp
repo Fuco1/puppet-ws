@@ -8,13 +8,13 @@ class cabal {
     $command = $name,
     $unless = undef,
     $cwd = undef) {
-    exec { "cabal $name":
-      command => "cabal $command",
+    exec { "cabal ${name}":
+      command     => "cabal ${command}",
       environment => "HOME=${home[$user]}",
-      path => ['/bin', '/usr/bin', '/usr/local/bin'],
-      require => Package['haskell-platform'],
-      cwd => $cwd,
-      unless => $unless,
+      path        => ['/bin', '/usr/bin', '/usr/local/bin'],
+      require     => Package['haskell-platform'],
+      cwd         => $cwd,
+      unless      => $unless,
     }
   }
 
@@ -22,19 +22,19 @@ class cabal {
     $flags = '',
     $unless = "ghc-pkg list ${name} | grep ${name}"
     ) {
-    cabal::cabal { "install $name $flags":
+    cabal::cabal { "install ${name} ${flags}":
       unless => $unless
     }
   }
 
   define compile ($cwd = $name) {
     cabal::cabal { "configure ${cwd}":
-      command => "configure",
-      cwd => $cwd,
+      command => 'configure',
+      cwd     => $cwd,
     } ->
     cabal::cabal { "install ${cwd}":
-      command => "install",
-      cwd => $cwd,
+      command => 'install',
+      cwd     => $cwd,
     }
   }
 

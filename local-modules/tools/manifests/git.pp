@@ -5,7 +5,7 @@ class git {
   }
   ->
   package { 'git':
-    ensure => 'latest',
+    ensure          => 'latest',
     install_options => ['--force-yes', '-y',],
   }
 

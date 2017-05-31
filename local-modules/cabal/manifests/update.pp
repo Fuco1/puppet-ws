@@ -1,7 +1,7 @@
 class cabal::update {
-  exec { "cabal update":
-    path => ['/bin', '/usr/bin', '/usr/local/bin'],
+  exec { 'cabal update':
+    path        => ['/bin', '/usr/bin', '/usr/local/bin'],
     environment => "HOME=${home[$user]}",
-    require => Package['haskell-platform'],
+    require     => Package['haskell-platform'],
   }
 }

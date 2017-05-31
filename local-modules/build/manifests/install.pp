@@ -14,29 +14,29 @@ define build::install (
   }
 
   vcsrepo { "build-vcs-${name}":
-    ensure => present,
+    ensure   => present,
     provider => git,
-    source => $git,
-    path => "${home[$user]}/sources/${target}",
-    require => File["${home[$user]}/sources"],
-    user => $user
+    source   => $git,
+    path     => "${home[$user]}/sources/${target}",
+    require  => File["${home[$user]}/sources"],
+    user     => $user
   }
   ~>
   exec { "build-build-${name}":
-    path => ['/usr/bin', '/bin'],
-    cwd => "${home[$user]}/sources/${target}",
-    command => "bash build.sh",
-    user => $builduser,
-    require => $requireDocker,
+    path        => ['/usr/bin', '/bin'],
+    cwd         => "${home[$user]}/sources/${target}",
+    command     => 'bash build.sh',
+    user        => $builduser,
+    require     => $requireDocker,
     refreshonly => true,
   }
   ~>
   exec { "build-install-${name}":
-    path => ['/usr/bin', '/bin'],
-    cwd => "${home[$user]}/sources/${target}",
-    command => "test -f install.sh && bash install.sh",
-    user => $installuser,
-    require => $requireDocker,
+    path        => ['/usr/bin', '/bin'],
+    cwd         => "${home[$user]}/sources/${target}",
+    command     => 'test -f install.sh && bash install.sh',
+    user        => $installuser,
+    require     => $requireDocker,
     refreshonly => true,
   }
 
