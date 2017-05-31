@@ -1,4 +1,4 @@
-class haskell {
+class dev::haskell {
 
   package { 'haskell-platform': ensure => installed } ->
   package { 'c2hs': ensure => installed } ->

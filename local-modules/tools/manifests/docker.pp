@@ -1,4 +1,4 @@
-class docker {
+class tools::docker {
 
   package { 'docker.io':
     ensure => present,

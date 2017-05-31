@@ -1,4 +1,4 @@
-class twmn {
+class desktop::twmn {
 
   package { 'libboost-program-options1.58.0': ensure => installed }
 

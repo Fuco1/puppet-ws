@@ -1,4 +1,4 @@
-class tagsistant {
+class tools::tagsistant {
 
   package { 'libglib2.0-dev': ensure => installed }
   package { 'libextractor-dev': ensure => installed }

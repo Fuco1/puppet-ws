@@ -1,4 +1,5 @@
-class spotify {
+# Instll spotify desktop client
+class desktop::spotify {
 
   apt::source { 'spotify':
     location => 'http://repository.spotify.com',
@@ -8,7 +9,9 @@ class spotify {
       id     => 'BBEBDCB318AD50EC6865090613B00F1FD2C19886',
       server => 'hkp://keyserver.ubuntu.com:80',
     },
-    include  => { src    => false },
+    include  => {
+      src => false
+    },
     pin      => 400
   }
   ->

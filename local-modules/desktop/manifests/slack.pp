@@ -1,4 +1,4 @@
-class slack {
+class desktop::slack {
 
   file { '/var/cache/wget': ensure => directory }
 
@@ -10,8 +10,8 @@ class slack {
   }
 
   package { 'slack-desktop':
-    provider => dpkg,
     ensure   => latest,
+    provider => dpkg,
     source   => '/tmp/slack-desktop-2.6.0-amd64.deb',
     require  => Wget::Fetch['slack-deb'],
   }

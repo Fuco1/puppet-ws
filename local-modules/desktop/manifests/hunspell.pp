@@ -1,17 +1,19 @@
-class hunspell {
+class desktop::hunspell {
 
   package { 'hunspell': ensure => installed } ->
-  package { ['hunspell-de-de',
-             'hunspell-en-us',
-             'hunspell-fr',
-             'hunspell-ru',
-             'myspell-cs',
-             'myspell-en-au',
-             'myspell-en-gb',
-             'myspell-en-za',
-             'myspell-it',
-             'myspell-sk',]:
-               ensure => installed
+  package { [
+    'hunspell-de-de',
+    'hunspell-en-us',
+    'hunspell-fr',
+    'hunspell-ru',
+    'myspell-cs',
+    'myspell-en-au',
+    'myspell-en-gb',
+    'myspell-en-za',
+    'myspell-it',
+    'myspell-sk',
+  ]:
+    ensure => installed
   }
   ->
   file { '/usr/share/hunspell/la_LA.aff':

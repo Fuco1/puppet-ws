@@ -1,4 +1,4 @@
-class cask {
+class tools::cask {
 
   exec { 'install-cask':
     path        => ['/usr/bin'],
