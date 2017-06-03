@@ -20,6 +20,9 @@ class desktop {
   package { 'qbittorrent': ensure => installed }
   package { 'vlc': ensure => installed }
   package { 'mplayer': ensure => installed }
+  package { 'd-feet': ensure => installed }
+
+  package { 'at-spi2-core': ensure => purged }
 
   ::python::pip { 'youtube_dl':
     ensure => installed,
