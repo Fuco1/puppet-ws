@@ -5,6 +5,7 @@ class desktop {
   include slack
   include twmn
   include zathura
+  include emacs
 
   package { 'trayer': ensure => installed }
   package { 'fonts-inconsolata': ensure => installed }
