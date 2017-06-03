@@ -18,7 +18,7 @@ class desktop {
   package { 'pass': ensure => installed }
   package { 'ledger': ensure => installed }
   package { 'qbittorrent': ensure => installed }
-  package { 'vlc-nox': ensure => installed }
+  package { 'vlc': ensure => installed }
   package { 'mplayer': ensure => installed }
 
   cron { 'org-git-commit':
