@@ -21,6 +21,11 @@ class desktop {
   package { 'vlc': ensure => installed }
   package { 'mplayer': ensure => installed }
 
+  ::python::pip { 'youtube_dl':
+    ensure => installed,
+    pkgname => 'youtube_dl',
+  }
+
   cron { 'org-git-commit':
     command => '/home/matus/bin/org-git-commit',
     user    => $user,
