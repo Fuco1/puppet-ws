@@ -8,9 +8,9 @@ define build::install (
   include build
 
   if $docker {
-    $requireDocker = [Class['docker']]
+    $requireDocker = [Class['tools::docker']]
   } else {
-    $requireDocker = [Class['docker']]
+    $requireDocker = [Class['tools::docker']]
   }
 
   vcsrepo { "build-vcs-${name}":
