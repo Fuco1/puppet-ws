@@ -42,8 +42,16 @@ class desktop {
     minute  => 55,
   }
 
-  file { "${home[$user]}/download-local": ensure => directory }
-  file { "${home[$user]}/bin": ensure => directory }
+  file { "${home[$user]}/download-local":
+    ensure => directory,
+    user   => $user,
+    group  => $user,
+  }
+  file { "${home[$user]}/bin":
+    ensure => directory,
+    user   => $user,
+    group  => $user,
+  }
 
   # get rid of useless directories
   file { "${home[$user]}/Desktop": ensure => absent, force => true, }
