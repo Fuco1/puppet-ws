@@ -8,9 +8,6 @@ class dev::python {
     gunicorn   => 'absent'
   }
 
-  ::python::pip { 'virtualfish':
-    pkgname => 'virtualfish',
-    require => Class['::python'],
-  }
+  ::python::pip { 'virtualfish': pkgname => 'virtualfish' }
 
 }
