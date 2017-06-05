@@ -24,6 +24,7 @@ class desktop {
   package { 'qbittorrent': ensure => installed }
   package { 'vlc': ensure => installed }
   package { 'mplayer': ensure => installed }
+  package { 'ubuntu-restricted-extras': ensure => installed }
   package { 'd-feet': ensure => installed }
 
   package { 'at-spi2-core': ensure => purged }
