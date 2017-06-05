@@ -7,6 +7,9 @@ class tools {
   include wine
   include tagsistant
 
+  package { 'vagrant': ensure => installed }
+  package { 'virtualbox': ensure => installed }
+
   # version control
   include git
   package { 'mercurial': ensure => installed }
