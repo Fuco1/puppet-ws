@@ -5,7 +5,10 @@ class desktop {
   include slack
   include twmn
   include zathura
-  include emacs
+
+  class { 'emacs':
+    require => Package['stow'],
+  }
 
   package { 'trayer': ensure => installed }
   package { 'fonts-inconsolata': ensure => installed }
