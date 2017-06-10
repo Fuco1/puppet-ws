@@ -1,6 +1,6 @@
 define build::install (
   $git = undef,
-  $target = $name,
+  $target = "${home[$user]}/sources/$name",
   $builduser = 'root',
   $installuser = 'root',
   Enum['docker', 'vagrant', 'host'] $build_env = 'docker',
@@ -22,14 +22,14 @@ define build::install (
     ensure   => present,
     provider => git,
     source   => $git,
-    path     => "${home[$user]}/sources/${target}",
-    require  => File["${home[$user]}/sources"],
-    user     => $user
+    path     => $target,
+    user     => $user,
+    require  => Class['tools::git'],
   }
   ~>
   exec { "build-build-${name}":
     path        => ['/usr/bin', '/bin'],
-    cwd         => "${home[$user]}/sources/${target}",
+    cwd         => $target,
     command     => "bash build.sh ${build_env}",
     user        => $builduser,
     require     => $require,
@@ -38,7 +38,7 @@ define build::install (
   ~>
   exec { "build-install-${name}":
     path        => ['/usr/bin', '/bin'],
-    cwd         => "${home[$user]}/sources/${target}",
+    cwd         => $target,
     command     => 'test -f install.sh && bash install.sh',
     user        => $installuser,
     require     => $require,
