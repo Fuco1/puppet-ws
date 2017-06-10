@@ -1,11 +1,10 @@
 class tools {
 
-  include docker
-  include cask
-  include php
-
-  include wine
-  include tagsistant
+  include tools::docker
+  include tools::cask
+  include tools::php
+  include tools::wine
+  include tools::tagsistant
 
   package { 'virtualbox': ensure => installed }
   package { 'vagrant':
@@ -14,7 +13,7 @@ class tools {
   }
 
   # version control
-  include git
+  include tools::git
   package { 'mercurial': ensure => installed }
 
   # avconv

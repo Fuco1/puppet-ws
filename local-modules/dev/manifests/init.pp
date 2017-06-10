@@ -1,9 +1,9 @@
 class dev {
 
   include python
-  include haskell
+  include dev::haskell
 
-  include libraries
+  include dev::libraries
 
   package { 'build-essential': ensure => installed }
   package { 'dpkg-dev': ensure => installed }

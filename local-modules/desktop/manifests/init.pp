@@ -1,10 +1,10 @@
 class desktop {
-  include spotify
+  include desktop::spotify
   include xmonad
-  include hunspell
-  include slack
-  include twmn
-  include zathura
+  include desktop::hunspell
+  include desktop::slack
+  include desktop::twmn
+  include desktop::zathura
 
   build::install { 'emacs-build':
     git       => 'git@github.com:Fuco1/emacs-build.git',
