@@ -11,11 +11,11 @@ define build::install (
   $vagrant_dependencies = [Package['vagrant']]
 
   if $build_env == 'docker' {
-    $require = $docker_dependencies
+    $build_require = $docker_dependencies
   } elsif $build_env == 'vagrant' {
-    $require = $vagrant_dependencies
+    $build_require = $vagrant_dependencies
   } else {
-    $require = []
+    $build_require = []
   }
 
   vcsrepo { "build-vcs-${name}":
@@ -32,7 +32,7 @@ define build::install (
     cwd         => $target,
     command     => "bash build.sh ${build_env}",
     user        => $builduser,
-    require     => $require,
+    require     => $build_require,
     refreshonly => true,
   }
   ~>
@@ -41,7 +41,7 @@ define build::install (
     cwd         => $target,
     command     => 'test -f install.sh && bash install.sh',
     user        => $installuser,
-    require     => $require,
+    require     => $build_require,
     refreshonly => true,
   }
 
