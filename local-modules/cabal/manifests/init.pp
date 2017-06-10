@@ -1,5 +1,8 @@
 # TODO: magic dependency on $home and $user
-class cabal {
+class cabal (
+  String $user = lookup('user'),
+  String $home = lookup("home.${user}"),
+) {
 
   #include vcsrepo
   include ::cabal::update
@@ -10,7 +13,7 @@ class cabal {
     $cwd = undef) {
     exec { "cabal ${name}":
       command     => "cabal ${command}",
-      environment => "HOME=${home[$user]}",
+      environment => "HOME=${home}",
       path        => ['/bin', '/usr/bin', '/usr/local/bin'],
       require     => Package['haskell-platform'],
       cwd         => $cwd,

@@ -1,4 +1,7 @@
-class tools::php {
+class tools::php (
+  String $user = lookup('user'),
+  String $home = lookup("home.${user}"),
+) {
 
   mintppa::ppa { 'ppa:ondrej/php':
     id => '14AA40EC0831756756D7F66C4F4EA0AAE5267A6C',
@@ -29,14 +32,14 @@ class tools::php {
 
   exec { 'install-composer':
     path        => ['/usr/bin', '/bin'],
-    command     => "bash /tmp/composer-installer.sh && mv composer.phar \"${home[$user]}/bin/composer\"",
+    command     => "bash /tmp/composer-installer.sh && mv composer.phar \"${home}/bin/composer\"",
     user        => $user,
-    environment => "HOME=${home[$user]}",
-    unless      => "test -d ${home[$user]}/.composer -o -d ${home[$user]}/.config/composer",
+    environment => "HOME=${home}",
+    unless      => "test -d ${home}/.composer -o -d ${home}/.config/composer",
     require     => [
       Package['php7.1'],
       File['/tmp/composer-installer.sh'],
-      File["${home[$user]}/bin"],
+      File["${home}/bin"],
     ],
   }
 

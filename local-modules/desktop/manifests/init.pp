@@ -1,4 +1,8 @@
-class desktop {
+class desktop (
+  String $user = lookup('user'),
+  String $home = lookup("home.${user}"),
+) {
+
   include desktop::spotify
   include xmonad
   include desktop::hunspell
@@ -35,39 +39,39 @@ class desktop {
   package { 'at-spi2-core': ensure => purged }
 
   ::python::pip { 'youtube_dl':
-    ensure => installed,
+    ensure  => installed,
     pkgname => 'youtube_dl',
   }
 
   cron { 'org-git-commit':
-    command => '/home/matus/bin/org-git-commit',
+    command => "${home}/bin/org-git-commit",
     user    => $user,
     minute  => 0,
   }
 
   cron { 'run-getmail':
-    command => '/home/matus/bin/run-getmail',
+    command => "${home}/bin/run-getmail",
     user    => $user,
     minute  => 55,
   }
 
-  file { "${home[$user]}/download-local":
+  file { "${home}/download-local":
     ensure => directory,
-    user   => $user,
+    owner  => $user,
     group  => $user,
   }
-  file { "${home[$user]}/bin":
+  file { "${home}/bin":
     ensure => directory,
-    user   => $user,
+    owner  => $user,
     group  => $user,
   }
 
   # get rid of useless directories
-  file { "${home[$user]}/Desktop": ensure => absent, force => true, }
-  file { "${home[$user]}/Downloads": ensure => absent, force => true, }
-  file { "${home[$user]}/Pictures": ensure => absent, force => true, }
-  file { "${home[$user]}/Templates": ensure => absent, force => true, }
-  file { "${home[$user]}/Videos": ensure => absent, force => true, }
-  file { "${home[$user]}/Music": ensure => absent, force => true, }
+  file { "${home}/Desktop": ensure => absent, force => true, }
+  file { "${home}/Downloads": ensure => absent, force => true, }
+  file { "${home}/Pictures": ensure => absent, force => true, }
+  file { "${home}/Templates": ensure => absent, force => true, }
+  file { "${home}/Videos": ensure => absent, force => true, }
+  file { "${home}/Music": ensure => absent, force => true, }
 
 }

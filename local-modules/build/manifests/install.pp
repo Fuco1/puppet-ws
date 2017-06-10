@@ -1,13 +1,16 @@
+# Install the required "build"
 define build::install (
-  $git = undef,
-  $target = "${home[$user]}/sources/$name",
-  $builduser = 'root',
-  $installuser = 'root',
+  String $user = lookup('user'),
+  String $home = lookup("home.${user}"),
+  String $git = undef,
+  String $target = "${home}/sources/${name}",
+  String $builduser = 'root',
+  String $installuser = 'root',
   Enum['docker', 'vagrant', 'host'] $build_env = 'docker',
 ) {
   include build
 
-  $docker_dependencies = [Class['tools::docker']]
+  $docker_dependencies = [Service['docker']]
   $vagrant_dependencies = [Package['vagrant']]
 
   if $build_env == 'docker' {
@@ -26,8 +29,7 @@ define build::install (
     user     => $user,
     require  => Package['git'],
   }
-  ~>
-  exec { "build-build-${name}":
+  ~> exec { "build-build-${name}":
     path        => ['/usr/bin', '/bin'],
     cwd         => $target,
     command     => "bash build.sh ${build_env}",
@@ -35,8 +37,7 @@ define build::install (
     require     => $build_require,
     refreshonly => true,
   }
-  ~>
-  exec { "build-install-${name}":
+  ~> exec { "build-install-${name}":
     path        => ['/usr/bin', '/bin'],
     cwd         => $target,
     command     => 'test -f install.sh && bash install.sh',

@@ -1,0 +1,16 @@
+---
+version: 5
+
+defaults:
+  data_hash: yaml_data
+  datadir: hiera
+
+hierarchy:
+  - name: Host Private
+    path: "%{::fqdn}.private.yaml"
+  - name: Host
+    path: "%{::fqdn}.yaml"
+  - name: Common Private
+    path: common.private.yaml
+  - name: Common
+    path: common.yaml

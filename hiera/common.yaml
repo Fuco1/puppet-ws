@@ -1,0 +1,10 @@
+lookup_options:
+  home:
+    merge: deep
+
+home:
+  root: "/root"
+
+python::virtualenv: true
+python::dev: true
+python::pip: true

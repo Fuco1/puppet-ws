@@ -1,12 +1,6 @@
 class dev::python {
 
-  class { '::python' :
-    version    => 'system',
-    pip        => 'present',
-    dev        => 'present',
-    virtualenv => 'present',
-    gunicorn   => 'absent'
-  }
+  include ::python
 
   ::python::pip { 'virtualfish': pkgname => 'virtualfish' }
 

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bundle exec puppet lookup --confdir="$PWD" $@

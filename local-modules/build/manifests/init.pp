@@ -1,6 +1,8 @@
-class build {
+class build (
+  String $user = lookup('user'),
+  String $home = lookup("home.${user}"),
+) {
 
-  # TODO: make this configurable
-  file { "${home[$user]}/sources": ensure => directory }
+  file { "${home}/sources": ensure => directory }
 
 }

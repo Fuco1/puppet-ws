@@ -3,12 +3,12 @@ class xmonad::dependencies {
   package { 'libxrandr-dev': ensure => installed }
   package { 'libxft-dev': ensure => installed }
 
-  file { ["${home[$user]}/dev", "${home[$user]}/dev/haskell"]:
+  file { ["${xmonad::home}/dev", "${xmonad::home}/dev/haskell"]:
     ensure  => directory,
-    require => User[$user],
+    require => User[$xmonad::user],
   }
 
-  vcsrepo { "${home[$user]}/dev/haskell/xmonad":
+  vcsrepo { "${xmonad::haskell_root}/xmonad":
     ensure   => present,
     provider => git,
     remote   => 'origin',
@@ -16,10 +16,10 @@ class xmonad::dependencies {
       'origin'   => 'git@github.com:Fuco1/xmonad.git',
       'upstream' => 'git@github.com:xmonad/xmonad.git',
     },
-    require  => File["${home[$user]}/dev/haskell"],
+    require  => File[$xmonad::haskell_root],
   }
 
-  vcsrepo { "${home[$user]}/dev/haskell/xmonad-contrib":
+  vcsrepo { "${xmonad::haskell_root}/xmonad-contrib":
     ensure   => present,
     provider => git,
     remote   => 'origin',
@@ -27,21 +27,21 @@ class xmonad::dependencies {
       'origin'   => 'git@github.com:Fuco1/xmonad-contrib.git',
       'upstream' => 'git@github.com:xmonad/xmonad-contrib.git',
     },
-    require  => File["${home[$user]}/dev/haskell"],
+    require  => File[$xmonad::haskell_root],
   }
 
-  vcsrepo { "${home[$user]}/dev/haskell/mpris":
+  vcsrepo { "${xmonad::haskell_root}/mpris":
     ensure   => present,
     provider => git,
     source   => 'git@github.com:Fuco1/mpris.git',
-    require  => File["${home[$user]}/dev/haskell"],
+    require  => File[$xmonad::haskell_root],
   }
 
-  vcsrepo { "${home[$user]}/.xmonad":
+  vcsrepo { "${xmonad::home}/.xmonad":
     ensure   => present,
     provider => git,
     source   => 'git@github.com:Fuco1/xmonad-config.git',
-    require  => File[$home[$user]],
+    require  => File[$xmonad::home],
   }
 
 }

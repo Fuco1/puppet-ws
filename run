@@ -1,3 +1,6 @@
 #!/bin/bash
 
-FACTERLIB="$PWD/facts" bundle exec puppet apply --modulepath="$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules" manifests/site.pp
+FACTERLIB="$PWD/facts" bundle exec puppet apply \
+         --confdir="$PWD" \
+         --modulepath="$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules" \
+         manifests/site.pp

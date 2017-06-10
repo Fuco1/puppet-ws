@@ -2,20 +2,20 @@ class xmonad::install {
 
   exec { 'install-xmonad':
     path        => ['/bin', '/usr/bin', '/usr/local/bin'],
-    cwd         => "${home[$user]}/.xmonad",
+    cwd         => "${xmonad::home}/.xmonad",
     command     => 'stack install',
-    environment => "HOME=${home[$user]}",
-    user        => $user,
-    unless      => "test -f ${home[$user]}/bin/xmonad",
+    environment => "HOME=${xmonad::home}",
+    user        => $xmonad::user,
+    unless      => "test -f ${xmonad::home}/bin/xmonad",
     require     => [
-      File["${home[$user]}/bin"],
+      File["${xmonad::home}/bin"],
       Exec['install-haskell-stack'],
     ],
   }
 
   build::install { 'xmobar-build':
     git       => 'git@github.com:Fuco1/xmobar-build.git',
-    target    => "${home[$user]}/dev/haskell/xmobar-build",
+    target    => "${xmonad::haskell_root}/xmobar-build",
     build_env => 'host',
     require   => [
       Package['libxft-dev'],

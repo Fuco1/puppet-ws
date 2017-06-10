@@ -1,15 +1,11 @@
-$home = {
-  matus => '/home/matus',
-  root => '/root',
-}
-
 node default {
-  $user = 'matus'
+  $user = lookup('user')
+  $home = lookup("home.${user}")
 
-  file { "${home[$user]}": ensure => directory } ->
-  user { "$user":
+  file { $home: ensure => directory }
+  -> user { $user:
     ensure => present,
-    home => "${home[$user]}",
+    home   => $home,
   }
 
   Class['cabal::update'] -> Cabal::Install<| |>

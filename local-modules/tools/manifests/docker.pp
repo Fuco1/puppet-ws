@@ -7,6 +7,9 @@ class tools::docker {
 
   package { 'docker-compose': ensure => present }
 
-  service { 'docker': ensure => running }
+  service { 'docker':
+    ensure => running,
+    provider => systemd
+  }
 
 }

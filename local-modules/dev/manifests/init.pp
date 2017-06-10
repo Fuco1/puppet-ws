@@ -1,6 +1,6 @@
 class dev {
 
-  include python
+  include dev::python
   include dev::haskell
 
   include dev::libraries
