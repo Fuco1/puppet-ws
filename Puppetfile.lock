@@ -2,20 +2,26 @@ FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
     maestrodev-wget (1.7.3)
-    puppetlabs-apt (2.4.0)
-      puppetlabs-stdlib (< 5.0.0, >= 4.13.0)
-    puppetlabs-stdlib (4.15.0)
-    puppetlabs-vcsrepo (1.4.0)
+    puppetlabs-apt (4.1.0)
+      puppetlabs-stdlib (< 5.0.0, >= 4.16.0)
+    puppetlabs-stdlib (4.17.0)
+    puppetlabs-vcsrepo (1.5.0)
     stahnma-epel (1.2.2)
       puppetlabs-stdlib (>= 3.0.0)
-    stankevich-python (1.18.2)
+
+GIT
+  remote: https://github.com/stankevich/puppet-python
+  ref: 2.4.2
+  sha: fa24d3cfd0292c476fa3fd4f1ef686c9087ddbc4
+  specs:
+    stankevich-python (2.4.2)
       puppetlabs-stdlib (< 6.0.0, >= 4.6.0)
-      stahnma-epel (< 2.0.0, >= 1.2.2)
+      stahnma-epel (< 2.0.0, >= 1.0.1)
 
 DEPENDENCIES
-  maestrodev-wget (= 1.7.3)
-  puppetlabs-apt (= 2.4.0)
-  puppetlabs-stdlib (= 4.15.0)
-  puppetlabs-vcsrepo (= 1.4.0)
-  stankevich-python (= 1.18.2)
+  maestrodev-wget (~> 1.7)
+  puppetlabs-apt (~> 4.1)
+  puppetlabs-stdlib (~> 4.15)
+  puppetlabs-vcsrepo (~> 1.5)
+  stankevich-python (>= 0)
 
