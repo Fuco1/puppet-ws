@@ -25,7 +25,6 @@ class tools {
   package { 'stow': ensure => installed }
 
   # m17n - internalization, support for devanagari rendering
-  package { 'libm17n-dev': ensure => installed } ->
   package { 'm17n-db': ensure => installed } ->
   package { 'm17n-lib-bin': ensure => installed }
 
