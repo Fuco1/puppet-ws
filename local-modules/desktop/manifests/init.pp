@@ -6,8 +6,13 @@ class desktop {
   include twmn
   include zathura
 
-  class { 'emacs':
-    require => Package['stow'],
+  build::install { 'emacs-build':
+    git       => 'git@github.com:Fuco1/emacs-build.git',
+    build_env => vagrant,
+    require   => [
+      Package['stow'],
+      Package['vagrant'],
+    ],
   }
 
   package { 'trayer': ensure => installed }
