@@ -24,7 +24,7 @@ define build::install (
     source   => $git,
     path     => $target,
     user     => $user,
-    require  => Class['tools::git'],
+    require  => Package['git'],
   }
   ~>
   exec { "build-build-${name}":
