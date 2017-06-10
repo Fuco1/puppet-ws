@@ -6,7 +6,7 @@ class dev::haskell {
   exec { 'install-haskell-stack':
     path        => ['/bin', '/usr/bin', '/usr/local/bin'],
     command     => 'wget -qO- https://get.haskellstack.org/ | sh',
-    user        => $root,
+    user        => root,
     environment => "HOME=${home[$user]}",
     unless      => 'which stack',
   }
