@@ -3,8 +3,8 @@
 echo "Loading $PWD/common.sh"
 source "$PWD/common.sh"
 
-install "Install ruby bundle" bundle install --path vendor/bundle --binstubs
-install "Install puppet bundle" ./bin/librarian-puppet install
+[ -z "$SKIP_BUNDLER" ] && install "Install ruby bundle" bundle install --path vendor/bundle --binstubs
+[ -z "$SKIP_LIBRARIAN" ] && install "Install puppet bundle" ./bin/librarian-puppet install
 install "Run puppet" ${SUDO} \
         FACTERLIB="$PWD/facts" \
         ./bin/puppet apply \

@@ -4,6 +4,8 @@ NOOP=""
 SUDO="sudo env PATH=$PATH "
 NO_RUN=""
 DEBUG=""
+SKIP_BUNDLER=""
+SKIP_LIBRARIAN=""
 INSTALL_PATH=${INSTALL_PATH:-"$HOME/dev/puppet"}
 while [ "$#" -gt 0 ]; do
     case "$1" in
@@ -21,6 +23,12 @@ while [ "$#" -gt 0 ]; do
             ;;
         "--no-sudo")
             SUDO=""
+            ;;
+        "--skip-bundler")
+            SKIP_BUNDLER="true"
+            ;;
+        "--skip-librarian")
+            SKIP_LIBRARIAN="true"
             ;;
         "--install-path")
             shift
