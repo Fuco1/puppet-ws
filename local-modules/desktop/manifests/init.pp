@@ -1,7 +1,12 @@
 class desktop (
-  String $user = lookup('user'),
-  String $home = lookup("home.${user}"),
+  String $user = $desktop::config::user,
+  String $home = $desktop::config::home,
 ) {
+
+  include desktop::config
+
+  include desktop::files
+  include desktop::users
 
   include desktop::spotify
   include xmonad
