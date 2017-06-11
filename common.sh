@@ -7,6 +7,7 @@ DEBUG=""
 SKIP_BUNDLER=""
 SKIP_LIBRARIAN=""
 INSTALL_PATH=${INSTALL_PATH:-"$HOME/dev/puppet"}
+MANIFEST="manifests/site.pp"
 while [ "$#" -gt 0 ]; do
     case "$1" in
         "--no-run")
@@ -33,6 +34,10 @@ while [ "$#" -gt 0 ]; do
         "--install-path")
             shift
             INSTALL_PATH="$1"
+            ;;
+        "--manifest")
+            shift
+            MANIFEST="$1"
             ;;
     esac
     shift

@@ -11,4 +11,4 @@ install "Run puppet" ${SUDO} \
         --confdir="$PWD" \
         --modulepath="$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules" \
         "$NOOP" \
-        manifests/site.pp
+        "$MANIFEST"
