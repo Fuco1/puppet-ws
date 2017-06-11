@@ -1,6 +1,15 @@
 #!/bin/bash
 
-FACTERLIB="$PWD/facts" bundle exec puppet apply \
+echo "Loading $PWD/common.sh"
+source "$PWD/common.sh"
+
+install "Install ruby bundle" bundle install --path vendor/bundle --binstubs
+install "Install puppet bundle" ./bin/librarian-puppet install
+
+export FACTERLIB="$PWD/facts"
+
+install "Run puppet" ${SUDO} ./bin/puppet apply \
          --confdir="$PWD" \
          --modulepath="$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules" \
+         "$NOOP" \
          manifests/site.pp

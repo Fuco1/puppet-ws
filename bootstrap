@@ -1,14 +1,7 @@
-# -*- mode: shell-script -*-
-red=`tput setaf 1`
-green=`tput setaf 2`
-reset=`tput sgr0`
+#!/bin/bash
 
-function install {
-    echo -n "${green}$1..."
-    shift
-    $@ >/dev/null
-    echo " done${reset}"
-}
+echo -n "Loading $PWD/common.sh... "
+source "$PWD/common.sh"
 
 install "Updating apt sources" apt-get update
 
@@ -16,19 +9,23 @@ if ! which git >/dev/null; then
     install "Installing git" apt-get install -y git
 fi
 
-if ! which ruby >/dev/null; then
-    install "Installing ruby stack" apt-get install -y ruby-bundler ruby-dev
+if ! which bundler >/dev/null; then
+    install "Installing bundler" apt-get install -y ruby-bundler
 fi
 
-mkdir -p "$HOME/dev/puppet"
-cd "$HOME/dev/puppet"
+if apt-cache policy ruby-dev | grep '(none)' >/dev/null; then
+    install "Installing ruby-dev" apt-get install -y ruby-dev
+fi
+
+mkdir -p "$INSTALL_PATH"
+install "Switch to $INSTALL_PATH" cd "$INSTALL_PATH"
 
 if test ! -d puppet-ws; then
     install "Clonning puppet-ws" git clone https://github.com/fuco1/puppet-ws.git
 fi
 
-cd puppet-ws
-install "Install ruby bundle" bundle install --path vendor/bundle
-install "Install puppet bundle" bundle exec librarian-puppet install
+install "Switch to $INSTALL_PATH/puppet-ws" cd puppet-ws
 
-./run
+if [ -z "$NO_RUN" ]; then
+    ./run
+fi
