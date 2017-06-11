@@ -1,4 +1,4 @@
-# puppet-ws
+# puppet-ws [![Build Status](https://semaphoreci.com/api/v1/github-fuco1/puppet-ws/branches/master/shields_badge.svg)](https://semaphoreci.com/github-fuco1/puppet-ws)
 
 Puppet to set up my personal workstations.
 
