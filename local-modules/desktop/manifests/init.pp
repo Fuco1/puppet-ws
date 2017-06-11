@@ -55,23 +55,4 @@ class desktop (
     minute  => 55,
   }
 
-  file { "${home}/download-local":
-    ensure => directory,
-    owner  => $user,
-    group  => $user,
-  }
-  file { "${home}/bin":
-    ensure => directory,
-    owner  => $user,
-    group  => $user,
-  }
-
-  # get rid of useless directories
-  file { "${home}/Desktop": ensure => absent, force => true, }
-  file { "${home}/Downloads": ensure => absent, force => true, }
-  file { "${home}/Pictures": ensure => absent, force => true, }
-  file { "${home}/Templates": ensure => absent, force => true, }
-  file { "${home}/Videos": ensure => absent, force => true, }
-  file { "${home}/Music": ensure => absent, force => true, }
-
 }
