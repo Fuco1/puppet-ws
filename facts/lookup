@@ -1,0 +1,3 @@
+#!/bin/bash
+
+FACTERLIB="$PWD/facts" ./bin/puppet facts | jq ".values.$1"
