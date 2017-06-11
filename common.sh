@@ -8,7 +8,7 @@ SKIP_BUNDLER=""
 SKIP_LIBRARIAN=""
 INSTALL_PATH=${INSTALL_PATH:-"$HOME/dev/puppet"}
 MANIFEST="manifests/site.pp"
-while [ "$#" -gt 0 ]; do
+while [ "$#" -gt 0 -a "$1" != "--" ]; do
     case "$1" in
         "--no-run")
             NO_RUN="true"
@@ -42,6 +42,8 @@ while [ "$#" -gt 0 ]; do
     esac
     shift
 done
+
+[ "$1" = "--" ] && shift
 
 red=`tput setaf 1`
 green=`tput setaf 2`
