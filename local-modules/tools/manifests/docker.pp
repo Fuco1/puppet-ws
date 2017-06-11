@@ -7,9 +7,12 @@ class tools::docker {
 
   package { 'docker-compose': ensure => present }
 
-  service { 'docker':
-    ensure => running,
-    provider => systemd
+  if $::systemd_present {
+    service { 'docker':
+      ensure => running,
+      provider => systemd
+    }
+  } else {
+    service { 'docker': ensure => running }
   }
-
 }
