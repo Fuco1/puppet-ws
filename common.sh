@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NOOP=""
-SUDO="sudo "
+SUDO="sudo env PATH=$PATH "
 NO_RUN=""
 DEBUG=""
 INSTALL_PATH=${INSTALL_PATH:-"$HOME/dev/puppet"}
@@ -17,7 +17,7 @@ while [ "$#" -gt 0 ]; do
             NOOP="--noop"
             ;;
         "--sudo")
-            SUDO="sudo "
+            SUDO="sudo env PATH=$PATH "
             ;;
         "--no-sudo")
             SUDO=""
