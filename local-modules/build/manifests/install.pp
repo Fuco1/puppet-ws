@@ -36,6 +36,7 @@ define build::install (
     user        => $builduser,
     require     => $build_require,
     refreshonly => true,
+    timeout     => 3600,
   }
   ~> exec { "build-install-${name}":
     path        => ['/usr/bin', '/bin'],
@@ -44,6 +45,7 @@ define build::install (
     user        => $installuser,
     require     => $build_require,
     refreshonly => true,
+    timeout     => 3600,
   }
 
 }
