@@ -4,6 +4,8 @@ class tools::docker {
     ensure => present,
     notify => Service['docker'],
   }
+  -> User <| title == $desktop::config::user |> { groups +> 'docker' }
+
 
   package { 'docker-compose': ensure => present }
 
