@@ -40,6 +40,8 @@ class desktop (
   package { 'mplayer': ensure => installed }
   package { 'ubuntu-restricted-extras': ensure => installed }
   package { 'd-feet': ensure => installed }
+  package { 'notmuch': ensure => installed }
+  package { 'isync': ensure => installed }
 
   package { 'at-spi2-core': ensure => purged }
 
