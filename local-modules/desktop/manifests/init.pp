@@ -42,6 +42,7 @@ class desktop (
   package { 'd-feet': ensure => installed }
   package { 'notmuch': ensure => installed }
   package { 'isync': ensure => installed }
+  package { 'chromium-browser': ensure => installed }
 
   package { 'at-spi2-core': ensure => purged }
 
