@@ -14,6 +14,7 @@ class desktop (
   include desktop::slack
   include desktop::twmn
   include desktop::zathura
+  include desktop::fish
 
   build::install { 'emacs-build':
     git       => 'git@github.com:Fuco1/emacs-build.git',
@@ -26,7 +27,6 @@ class desktop (
 
   package { 'trayer': ensure => installed }
   package { 'fonts-inconsolata': ensure => installed }
-  package { 'fish': ensure => installed }
   package { 'tmux': ensure => installed }
   package { 'anki': ensure => installed }
   package { 'rxvt-unicode-256color': ensure => installed }
