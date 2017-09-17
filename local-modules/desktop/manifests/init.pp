@@ -43,6 +43,7 @@ class desktop (
   package { 'notmuch': ensure => installed }
   package { 'isync': ensure => installed }
   package { 'chromium-browser': ensure => installed }
+  package { 'arandr': ensure => installed }
 
   package { 'at-spi2-core': ensure => purged }
 
