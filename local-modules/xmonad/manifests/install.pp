@@ -20,6 +20,7 @@ class xmonad::install {
     require   => [
       Package['libxft-dev'],
       Package['libxrandr-dev'],
+      Exec['install-haskell-stack'],
     ]
   }
 
