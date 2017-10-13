@@ -24,9 +24,12 @@ class desktop (
     ],
   }
 
+  build::install { 'tmux-build':
+    git => 'git@github.com:Fuco1/tmux-build.git',
+  }
+
   package { 'trayer': ensure => installed }
   package { 'fonts-inconsolata': ensure => installed }
-  package { 'tmux': ensure => installed }
   package { 'anki': ensure => installed }
   package { 'rxvt-unicode-256color': ensure => installed }
   package { 'xsel': ensure => installed }
