@@ -30,18 +30,18 @@ define build::install (
     require  => Package['git'],
   }
   ~> exec { "build-build-${name}":
-    path        => ['/usr/bin', '/bin'],
+    path        => [$target, '/usr/bin', '/bin'],
     cwd         => $target,
-    command     => "bash build.sh ${build_env}",
+    command     => "build ${build_env}",
     user        => $builduser,
     require     => $build_require,
     refreshonly => true,
     timeout     => 3600,
   }
   ~> exec { "build-install-${name}":
-    path        => ['/usr/bin', '/bin'],
+    path        => [$target, '/usr/bin', '/bin'],
     cwd         => $target,
-    command     => 'test -f install.sh && bash install.sh',
+    command     => 'test -f install && install',
     user        => $installuser,
     require     => $build_require,
     refreshonly => true,
