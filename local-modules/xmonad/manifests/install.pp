@@ -9,6 +9,7 @@ class xmonad::install {
     unless      => 'which xmonad',
     require     => [
       File["${xmonad::home}/.local/bin"],
+      Vcsrepo["${xmonad::home}/.xmonad"],
       Exec['install-haskell-stack'],
     ],
   }
