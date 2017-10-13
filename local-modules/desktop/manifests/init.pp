@@ -21,7 +21,6 @@ class desktop (
     build_env => vagrant,
     require   => [
       Package['stow'],
-      Package['vagrant'],
     ],
   }
 
