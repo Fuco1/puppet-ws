@@ -20,7 +20,10 @@ class desktop::files {
     group  => $desktop::config::user,
   }
 
-  file { "${desktop::config::home}/bin":
+  file { [
+    "${desktop::config::home}/.local/",
+    "${desktop::config::home}/.local/bin",
+  ]:
     ensure => directory,
     owner  => $desktop::config::user,
     group  => $desktop::config::user,

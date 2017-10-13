@@ -53,13 +53,13 @@ class desktop (
   }
 
   cron { 'org-git-commit':
-    command => "${home}/bin/org-git-commit",
+    command => "${home}/.local/bin/org-git-commit",
     user    => $user,
     minute  => 0,
   }
 
   cron { 'run-getmail':
-    command => "${home}/bin/run-getmail",
+    command => "${home}/.local/bin/run-getmail",
     user    => $user,
     minute  => 55,
   }

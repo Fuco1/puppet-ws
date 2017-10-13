@@ -1,14 +1,14 @@
 class xmonad::install {
 
   exec { 'install-xmonad':
-    path        => ['/bin', '/usr/bin', '/usr/local/bin'],
+    path        => ['/bin', '/usr/bin', '/usr/local/bin', "${xmonad::home}/.local/bin"],
     cwd         => "${xmonad::home}/.xmonad",
     command     => 'stack install',
     environment => "HOME=${xmonad::home}",
     user        => $xmonad::user,
-    unless      => "test -f ${xmonad::home}/bin/xmonad",
+    unless      => 'which xmonad',
     require     => [
-      File["${xmonad::home}/bin"],
+      File["${xmonad::home}/.local/bin"],
       Exec['install-haskell-stack'],
     ],
   }

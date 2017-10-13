@@ -31,15 +31,15 @@ class tools::php (
   }
 
   exec { 'install-composer':
-    path        => ['/usr/bin', '/bin'],
-    command     => "bash /tmp/composer-installer.sh && mv composer.phar \"${home}/bin/composer\"",
+    path        => ['/usr/bin', '/bin', "${home}/.local/bin"],
+    command     => "bash /tmp/composer-installer.sh && mv composer.phar \"${home}/.local/bin/composer\"",
     user        => $user,
     environment => "HOME=${home}",
-    unless      => "test -d ${home}/.composer -o -d ${home}/.config/composer",
+    unless      => 'which composer',
     require     => [
       Package['php7.1'],
       File['/tmp/composer-installer.sh'],
-      File["${home}/bin"],
+      File["${home}/.local/bin"],
     ],
   }
 
