@@ -3,9 +3,10 @@ define build::install (
   String $user = lookup('user'),
   String $home = lookup("home.${user}"),
   String $git = undef,
-  String $target = "${home}/sources/${name}",
+  String $target = "${home}/.local/share/build-base/${name}",
   String $builduser = 'root',
   String $installuser = 'root',
+  String $revision = 'master',
   Enum['docker', 'vagrant', 'host'] $build_env = 'docker',
 ) {
   include build
@@ -27,6 +28,7 @@ define build::install (
     source   => $git,
     path     => $target,
     user     => $user,
+    revision => $revision,
     require  => Package['git'],
   }
   ~> exec { "build-build-${name}":
