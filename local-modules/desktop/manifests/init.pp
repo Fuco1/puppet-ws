@@ -66,4 +66,9 @@ class desktop (
     minute  => 55,
   }
 
+  file_line { 'mlocate-prunenames':
+    path => '/etc/updatedb.conf',
+    line => 'PRUNENAMES=".git .bzr .hg .svn .cache Trash .mozilla _cacache"',
+  }
+
 }
