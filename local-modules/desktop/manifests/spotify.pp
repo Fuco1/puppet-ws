@@ -12,7 +12,7 @@ class desktop::spotify {
     include  => {
       src => false
     },
-    pin      => 400
+    pin      => 600
   }
   ->
   package { 'spotify-client': ensure => installed }
