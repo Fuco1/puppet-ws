@@ -15,6 +15,7 @@ class desktop (
   include desktop::twmn
   include desktop::zathura
   include desktop::fish
+  include desktop::autojump
 
   build::install { 'emacs-build':
     git       => 'git@github.com:Fuco1/emacs-build.git',

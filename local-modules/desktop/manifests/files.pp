@@ -23,6 +23,7 @@ class desktop::files {
   file { [
     "${desktop::config::home}/.local/",
     "${desktop::config::home}/.local/bin",
+    "${desktop::config::home}/.local/share",
   ]:
     ensure => directory,
     owner  => $desktop::config::user,
