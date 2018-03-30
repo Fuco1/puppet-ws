@@ -3,6 +3,8 @@ class desktop (
   String $home = $desktop::config::home,
 ) {
 
+  file { '/var/cache/wget': ensure => directory }
+
   include desktop::config
 
   include desktop::files

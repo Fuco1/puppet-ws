@@ -5,6 +5,7 @@ class tools {
   include tools::php
   include tools::wine
   include tools::tagsistant
+  include tools::rclone
 
   package { 'virtualbox': ensure => installed }
   package { 'vagrant':
