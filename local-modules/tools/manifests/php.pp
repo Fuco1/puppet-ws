@@ -7,16 +7,6 @@ class tools::php (
     id => '14AA40EC0831756756D7F66C4F4EA0AAE5267A6C',
   }
 
-  package { 'php5.6':
-    ensure  => installed,
-    require => Mintppa::Ppa['ppa:ondrej/php'],
-  }
-
-  package { 'php7.0':
-    ensure  => installed,
-    require => Mintppa::Ppa['ppa:ondrej/php'],
-  }
-
   package { 'php7.1':
     ensure  => installed,
     require => Mintppa::Ppa['ppa:ondrej/php'],
