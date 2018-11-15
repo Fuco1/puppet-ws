@@ -14,8 +14,9 @@ class desktop::twmn (
   package { 'libboost-system1.65.1': ensure => installed }
 
   build::install { 'twmn-build':
-    git => $repository,
-    require => [
+    git      => $repository,
+    revision => 'release/bionic',
+    require  => [
       Package['libboost-program-options1.65.1'],
       Package['libboost-system1.65.1'],
     ],

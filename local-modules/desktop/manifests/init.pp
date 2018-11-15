@@ -28,7 +28,8 @@ class desktop (
   }
 
   build::install { 'tmux-build':
-    git => 'git@github.com:Fuco1/tmux-build.git',
+    git      => 'git@github.com:Fuco1/tmux-build.git',
+    revision => 'release/bionic',
   }
 
   package { 'trayer': ensure => installed }
