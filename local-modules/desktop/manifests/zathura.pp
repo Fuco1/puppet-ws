@@ -1,7 +1,8 @@
 class desktop::zathura {
 
   build::install { 'zathura-build':
-    git => 'git@github.com:Fuco1/zathura-build.git'
+    git         => 'git@github.com:Fuco1/zathura-build.git',
+    installuser => $desktop::user,
   }
 
 }
