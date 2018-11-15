@@ -8,6 +8,7 @@ define build::install (
   String $installuser = 'root',
   String $revision = 'master',
   Array[String] $environment = [],
+  Array[String] $path_extra = [],
   Enum['docker', 'vagrant', 'host'] $build_env = 'docker',
 ) {
   include build
@@ -33,7 +34,7 @@ define build::install (
     require  => Package['git'],
   }
   ~> exec { "build-build-${name}":
-    path        => [$target, '/usr/bin', '/bin'],
+    path        => [$target, '/usr/bin', '/bin'] + $path_extra,
     cwd         => $target,
     command     => "build ${build_env}",
     user        => $builduser,
@@ -43,7 +44,7 @@ define build::install (
     timeout     => 3600,
   }
   ~> exec { "build-install-${name}":
-    path        => [$target, '/usr/bin', '/bin'],
+    path        => [$target, '/usr/bin', '/bin'] + $path_extra,
     cwd         => $target,
     command     => 'test -f install && install',
     user        => $installuser,
