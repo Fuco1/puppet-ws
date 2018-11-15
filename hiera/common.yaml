@@ -5,6 +5,6 @@ lookup_options:
 home:
   root: "/root"
 
-python::virtualenv: true
+python::virtualenv: present
 python::dev: true
-python::pip: true
+python::pip: present
