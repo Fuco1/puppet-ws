@@ -32,6 +32,7 @@ class desktop (
   }
 
   package { 'trayer': ensure => installed }
+  package { 'chrony': ensure => installed }
   package { 'fonts-inconsolata': ensure => installed }
   package { 'anki': ensure => installed }
   package { 'rxvt-unicode-256color': ensure => installed }
