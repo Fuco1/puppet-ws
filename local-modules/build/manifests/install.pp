@@ -7,6 +7,7 @@ define build::install (
   String $builduser = 'root',
   String $installuser = 'root',
   String $revision = 'master',
+  Array[String] $environment = [],
   Enum['docker', 'vagrant', 'host'] $build_env = 'docker',
 ) {
   include build
@@ -37,6 +38,7 @@ define build::install (
     command     => "build ${build_env}",
     user        => $builduser,
     require     => $build_require,
+    environment => $environment,
     refreshonly => true,
     timeout     => 3600,
   }
@@ -46,6 +48,7 @@ define build::install (
     command     => 'test -f install && install',
     user        => $installuser,
     require     => $build_require,
+    environment => $environment,
     refreshonly => true,
     timeout     => 3600,
   }
