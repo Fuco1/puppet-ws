@@ -8,3 +8,5 @@ home:
 python::virtualenv: present
 python::dev: true
 python::pip: present
+
+desktop::slack::version: '3.3.3'
