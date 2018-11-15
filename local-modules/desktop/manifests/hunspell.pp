@@ -6,12 +6,9 @@ class desktop::hunspell {
     'hunspell-en-us',
     'hunspell-fr',
     'hunspell-ru',
-    'myspell-cs',
-    'myspell-en-au',
-    'myspell-en-gb',
-    'myspell-en-za',
-    'myspell-it',
-    'myspell-sk',
+    'hunspell-it',
+    'hunspell-cs',
+    'hunspell-sk',
   ]:
     ensure => installed
   }
