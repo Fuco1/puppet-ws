@@ -18,7 +18,7 @@ class tools {
   package { 'mercurial': ensure => installed }
 
   # avconv
-  package { 'libav-tools': ensure => installed } ->
+  package { 'ffmpeg': ensure => installed } ->
   package { 'libavcodec-extra': ensure => installed }
 
   # stow
