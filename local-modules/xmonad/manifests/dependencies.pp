@@ -2,6 +2,8 @@ class xmonad::dependencies {
 
   package { 'libxrandr-dev': ensure => installed }
   package { 'libxft-dev': ensure => installed }
+  package { 'libxinerama-dev': ensure => installed }
+  package { 'libxss-dev': ensure => installed }
 
   file { ["${xmonad::home}/dev", "${xmonad::home}/dev/haskell"]:
     ensure  => directory,

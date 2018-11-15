@@ -15,12 +15,18 @@ class xmonad::install {
   }
 
   build::install { 'xmobar-build':
-    git       => 'git@github.com:Fuco1/xmobar-build.git',
-    target    => "${xmonad::haskell_root}/xmobar-build",
-    build_env => 'host',
-    require   => [
+    git         => 'git@github.com:Fuco1/xmobar-build.git',
+    target      => "${xmonad::haskell_root}/xmobar-build",
+    build_env   => 'host',
+    installuser => $xmonad::user,
+    builduser   => $xmonad::user,
+    path_extra  => ['/usr/local/bin'],
+    environment => ["HOME=${xmonad::home}"],
+    require     => [
       Package['libxft-dev'],
       Package['libxrandr-dev'],
+      Package['libxinerama-dev'],
+      Package['libxss-dev'],
       Exec['install-haskell-stack'],
     ]
   }
