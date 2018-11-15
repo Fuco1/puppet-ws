@@ -17,6 +17,7 @@ class xmonad::dependencies {
       'upstream' => 'git@github.com:xmonad/xmonad.git',
     },
     require  => File[$xmonad::haskell_root],
+    identity => '/home/matus/.ssh/id_rsa',
   }
 
   vcsrepo { "${xmonad::haskell_root}/xmonad-contrib":
@@ -28,6 +29,7 @@ class xmonad::dependencies {
       'upstream' => 'git@github.com:xmonad/xmonad-contrib.git',
     },
     require  => File[$xmonad::haskell_root],
+    identity => '/home/matus/.ssh/id_rsa',
   }
 
   vcsrepo { "${xmonad::haskell_root}/mpris":
@@ -35,6 +37,7 @@ class xmonad::dependencies {
     provider => git,
     source   => 'git@github.com:Fuco1/mpris.git',
     require  => File[$xmonad::haskell_root],
+    identity => '/home/matus/.ssh/id_rsa',
   }
 
   vcsrepo { "${xmonad::home}/.xmonad":
@@ -42,6 +45,7 @@ class xmonad::dependencies {
     provider => git,
     source   => 'git@github.com:Fuco1/xmonad-config.git',
     require  => File[$xmonad::home],
+    identity => '/home/matus/.ssh/id_rsa',
   }
 
 }
