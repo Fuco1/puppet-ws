@@ -20,6 +20,13 @@ class tools::php (
     mode   => '0700',
   }
 
+  file { "${home}/.composer":
+    ensure => directory,
+    owner  => $user,
+    group  => $user,
+    mode   => '0755',
+  }
+
   exec { 'install-composer':
     path        => ['/usr/bin', '/bin', "${home}/.local/bin"],
     command     => "bash /tmp/composer-installer.sh && mv composer.phar \"${home}/.local/bin/composer\"",
@@ -31,6 +38,18 @@ class tools::php (
       File['/tmp/composer-installer.sh'],
       File["${home}/.local/bin"],
     ],
+  }
+  ~> exec { 'php-language-server':
+    path        => ['/bin', '/usr/bin', "${home}/.local/bin"],
+    cwd         => "${home}/.composer",
+    command     => 'composer global require felixfbecker/language-server && composer run-script --working-dir=vendor/felixfbecker/language-server parse-stubs',
+    user        => $user,
+    environment => "HOME=${home}",
+    unless      => "test -f ${home}/.composer/vendor/bin/php-language-server.php",
+    require     => [
+      Exec['install-composer'],
+      File["${home}/.composer"]
+    ]
   }
 
 }
