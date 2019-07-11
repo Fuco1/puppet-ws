@@ -70,4 +70,6 @@ class tools {
 
   package { 'pandoc': ensure => installed }
 
+  package { 'jq': ensure => installed }
+
 }
