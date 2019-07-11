@@ -57,6 +57,8 @@ class tools {
 
   package { 'dbus': ensure => installed }
 
+  package { 'pbzip2': ensure => installed }
+
   #file system
   package { 'avfs': ensure => installed }
   package { 'fuse': ensure => installed }
