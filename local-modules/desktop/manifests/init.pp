@@ -51,6 +51,7 @@ class desktop (
   package { 'isync': ensure => installed }
   package { 'chromium-browser': ensure => installed }
   package { 'arandr': ensure => installed }
+  package { 'pasystray': ensure => installed }
 
   package { 'at-spi2-core': ensure => purged }
 
