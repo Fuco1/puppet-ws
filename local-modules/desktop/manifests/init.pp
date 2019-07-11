@@ -54,6 +54,7 @@ class desktop (
   package { 'pasystray': ensure => installed }
 
   package { 'at-spi2-core': ensure => purged }
+  package { 'notify-osd': ensure => purged }
 
   ::python::pip { 'youtube_dl':
     ensure  => installed,
