@@ -52,6 +52,7 @@ class desktop (
   package { 'chromium-browser': ensure => installed }
   package { 'arandr': ensure => installed }
   package { 'pasystray': ensure => installed }
+  package { 'pinentry-gtk2': ensure => installed }
 
   package { 'at-spi2-core': ensure => purged }
   package { 'notify-osd': ensure => purged }
