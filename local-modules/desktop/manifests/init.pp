@@ -48,7 +48,8 @@ class desktop (
   package { 'ubuntu-restricted-extras': ensure => installed }
   package { 'd-feet': ensure => installed }
   package { 'notmuch': ensure => installed }
-  package { 'isync': ensure => installed }
+  ## TODO: install from source
+  ## package { 'isync': ensure => installed }
   package { 'chromium-browser': ensure => installed }
   package { 'arandr': ensure => installed }
   package { 'pasystray': ensure => installed }
