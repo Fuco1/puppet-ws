@@ -65,7 +65,7 @@ class tools {
   package { 'libfuse-dev': ensure => installed }
 
   # databases
-  package { 'mysql-client': ensure => installed }
+  package { 'mariadb-client': ensure => installed }
   package { 'sqlite3': ensure => installed }
 
   package { 'pandoc': ensure => installed }
