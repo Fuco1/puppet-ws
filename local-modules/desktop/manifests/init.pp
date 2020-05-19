@@ -50,7 +50,7 @@ class desktop (
   package { 'notmuch': ensure => installed }
   ## TODO: install from source
   ## package { 'isync': ensure => installed }
-  package { 'chromium-browser': ensure => installed }
+  package { 'google-chrome-stable': ensure => installed }
   package { 'arandr': ensure => installed }
   package { 'pasystray': ensure => installed }
   package { 'pinentry-gtk2': ensure => installed }
