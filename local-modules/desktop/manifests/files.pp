@@ -32,7 +32,6 @@ class desktop::files {
 
   # get rid of useless directories
   file { "${desktop::config::home}/Desktop": ensure => absent, force => true, }
-  file { "${desktop::config::home}/Downloads": ensure => absent, force => true, }
   file { "${desktop::config::home}/Pictures": ensure => absent, force => true, }
   file { "${desktop::config::home}/Templates": ensure => absent, force => true, }
   file { "${desktop::config::home}/Videos": ensure => absent, force => true, }
