@@ -51,5 +51,17 @@ class tools::php (
       File["${home}/.composer"]
     ]
   }
+  ~> exec { 'psysh':
+    path        => ['/bin', '/usr/bin', "${home}/.local/bin"],
+    cwd         => "${home}/.composer",
+    command     => 'composer global require psy/psysh:@stable',
+    user        => $user,
+    environment => "HOME=${home}",
+    unless      => "test -f ${home}/.composer/vendor/bin/psysh",
+    require     => [
+      Exec['install-composer'],
+      File["${home}/.composer"]
+    ]
+  }
 
 }
