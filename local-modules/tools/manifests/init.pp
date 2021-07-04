@@ -72,4 +72,6 @@ class tools {
 
   package { 'jq': ensure => installed }
 
+  package { 'flameshot': ensure => installed }
+
 }
